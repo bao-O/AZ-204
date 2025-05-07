@@ -1,5 +1,323 @@
 # Azure App Service
 
+Question: How are Azure App Service Plans charged across different tiers?
+
+- [x] Free Tier is free with a CPU quota of 60 minutes per day
+- [x] Dedicated tiers (Basic, Standard, Premium) are charged per VM instance
+- [ ] Shared Tier is free but limited to one app per plan
+- [ ] Isolated Tier is charged based on CPU usage
+
+Answers:
+
+- Free Tier is free with a CPU quota of 60 minutes per day: Correct. Free Tier (F1) is free, limited to 60 minutes CPU/day.
+- Dedicated tiers (Basic, Standard, Premium) are charged per VM instance: Correct. Dedicated tiers charge based on VM instance hours.
+- Shared Tier is free but limited to one app per plan: Incorrect. Shared Tier (D1) charges ~$0.013/hour, supports multiple apps.
+- Isolated Tier is charged based on CPU usage: Incorrect. Isolated Tier charges based on the number of isolated workers.
+
+---
+
+Question: What roles do front ends and workers play in Azure App Service, and how do they behave in Free Tier?
+
+- [x] Front ends handle incoming HTTP(S) requests
+- [x] Workers in Free Tier are multi-tenant and shared
+- [ ] Front ends host customer workloads
+- [ ] Workers in Free Tier are dedicated to a single tenant
+
+Answers:
+
+- Front ends handle incoming HTTP(S) requests: Correct. Front ends route incoming traffic.
+- Workers in Free Tier are multi-tenant and shared: Correct. Free Tier uses shared workers across tenants.
+- Front ends host customer workloads: Incorrect. Workers host workloads, not front ends.
+- Workers in Free Tier are dedicated to a single tenant: Incorrect. Free Tier workers are shared.
+
+---
+
+Question: Which App Service Plan provides the maximum scale-out capabilities?
+
+- [x] Isolated
+- [ ] Standard
+- [ ] PremiumV2
+- [ ] Basic
+
+Answers:
+
+- Isolated: Correct. Isolated Tier offers the highest scale-out capabilities in a dedicated environment.
+- Standard: Incorrect. Standard supports scaling but is less flexible than Isolated.
+- PremiumV2: Incorrect. PremiumV2 scales well but not as extensively as Isolated.
+- Basic: Incorrect. Basic has limited scaling capabilities.
+
+---
+
+Question: What is a key consideration for App Service Plan charging?
+
+- [x] Charges are incurred even if no apps are deployed
+- [ ] Charges stop when all apps are deleted
+- [ ] Charges are based on HTTP request volume
+- [ ] Charges apply only when apps are active
+
+Answers:
+
+- Charges are incurred even if no apps are deployed: Correct. App Service Plans incur charges as long as they exist.
+- Charges stop when all apps are deleted: Incorrect. Charges continue until the plan is deleted.
+- Charges are based on HTTP request volume: Incorrect. Charges are based on plan tier, not requests.
+- Charges apply only when apps are active: Incorrect. Charges are independent of app activity.
+
+---
+
+Question: How do deployment slots, diagnostic logs, and backups behave in the same App Service Plan?
+
+- [x] They run on the same VM instances
+- [ ] They use separate VM instances for each feature
+- [ ] Diagnostic logs are stored on a different plan
+- [ ] Backups are performed on a separate worker
+
+Answers:
+
+- They run on the same VM instances: Correct. All features share the same VM instances in the plan.
+- They use separate VM instances for each feature: Incorrect. They share resources.
+- Diagnostic logs are stored on a different plan: Incorrect. Logs are stored within the same plan.
+- Backups are performed on a separate worker: Incorrect. Backups use the same workers.
+
+---
+
+Question: When should you isolate an app into a new App Service Plan?
+
+- [x] For resource-intensive apps
+- [x] To scale an app independently
+- [ ] To enable Always On
+- [ ] For apps using Free Tier
+
+Answers:
+
+- For resource-intensive apps: Correct. Isolation prevents resource contention.
+- To scale an app independently: Correct. A separate plan allows independent scaling.
+- To enable Always On: Incorrect. Always On is a setting, not a reason for a new plan.
+- For apps using Free Tier: Incorrect. Free Tier apps share resources.
+
+---
+
+Question: What are the prerequisites for moving an App Service Plan?
+
+- [x] Source and destination plans must be in the same resource group and region
+- [x] Both plans must support the same OS type
+- [ ] Plans can be in different Azure subscriptions
+- [ ] Plans must use different pricing tiers
+
+Answers:
+
+- Source and destination plans must be in the same resource group and region: Correct. This is a requirement for moving.
+- Both plans must support the same OS type: Correct. OS compatibility is required.
+- Plans can be in different Azure subscriptions: Incorrect. They must be in the same subscription.
+- Plans must use different pricing tiers: Incorrect. Tier compatibility depends on features.
+
+---
+
+Question: Which scaling methods are supported by Azure App Service, and what plans are required?
+
+- [x] Manual scaling requires Basic or higher
+- [x] Autoscale requires Standard or higher
+- [ ] Automatic scaling is available in Free Tier
+- [ ] Manual scaling requires Isolated Tier
+
+Answers:
+
+- Manual scaling requires Basic or higher: Correct. Basic+ supports manual scaling.
+- Autoscale requires Standard or higher: Correct. Standard+ supports autoscale.
+- Automatic scaling is available in Free Tier: Incorrect. Automatic scaling requires PremiumV2+.
+- Manual scaling requires Isolated Tier: Incorrect. Basic+ is sufficient.
+
+---
+
+Question: What is the point of horizontal and vertical scaling in App Service?
+
+- [x] Horizontal scaling adds or removes VM instances
+- [x] Vertical scaling changes the plan’s tier or size
+- [ ] Horizontal scaling changes CPU quota
+- [ ] Vertical scaling adds deployment slots
+
+Answers:
+
+- Horizontal scaling adds or removes VM instances: Correct. It scales out/in.
+- Vertical scaling changes the plan’s tier or size: Correct. It scales up/down.
+- Horizontal scaling changes CPU quota: Incorrect. CPU quota is fixed per tier.
+- Vertical scaling adds deployment slots: Incorrect. Slots are unrelated to vertical scaling.
+
+---
+
+Question: What is "flapping" in the context of App Service scaling?
+
+- [x] A loop where a scale event triggers its opposite repeatedly
+- [ ] A failure to scale due to insufficient resources
+- [ ] A delay in scaling due to cold starts
+- [ ] A manual scaling conflict
+
+Answers:
+
+- A loop where a scale event triggers its opposite repeatedly: Correct. Flapping is an alternating scale loop.
+- A failure to scale due to insufficient resources: Incorrect. This is a quota issue, not flapping.
+- A delay in scaling due to cold starts: Incorrect. Cold starts affect performance, not scaling.
+- A manual scaling conflict: Incorrect. Flapping is specific to autoscale.
+
+---
+
+Question: What are the requirements for using the `--is-linux` option in App Service?
+
+- [x] Standard or higher plan
+- [x] Persistent storage is enabled by default
+- [ ] Free Tier supports Linux apps
+- [ ] Blob storage is read-write
+
+Answers:
+
+- Standard or higher plan: Correct. Linux apps require Standard+.
+- Persistent storage is enabled by default: Correct. Linux apps have persistent storage on /home.
+- Free Tier supports Linux apps: Incorrect. Free Tier does not support Linux.
+- Blob storage is read-write: Incorrect. Blob storage is read-only for Linux.
+
+---
+
+Question: What are the prerequisites for using staging environments in App Service?
+
+- [x] Standard or higher plan
+- [ ] Free Tier
+- [ ] Isolated Tier only
+
+Answers:
+
+- Standard or higher plan: Correct. Deployment slots require Standard+.
+- Free Tier: Incorrect. Free Tier does not support slots.
+- Isolated Tier only: Incorrect. Standard+ is sufficient.
+
+---
+
+Question: Which settings are swapped in App Service deployment slots?
+
+- [x] Settings defining application behavior
+- [ ] Settings defining environment and security
+- [ ] All settings are swapped by default
+- [ ] No settings are swapped
+
+Answers:
+
+- Settings defining application behavior: Correct. Behavioral settings (e.g., App Settings) are swapped.
+- Settings defining environment and security: Incorrect. These (e.g., managed identities) are not swapped.
+- All settings are swapped by default: Incorrect. Only specific settings are swapped.
+- No settings are swapped: Incorrect. Behavioral settings are swapped.
+
+---
+
+Question: How do you enable settings swapping in App Service deployment slots?
+
+- [x] Set WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS to false
+- [ ] Enable swapping in the .deployment file
+- [ ] Use az webapp config swap command
+- [ ] Set WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG
+
+Answers:
+
+- Set WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS to false: Correct. This enables swapping of sticky settings.
+- Enable swapping in the .deployment file: Incorrect. Deployment files are for deployment configuration.
+- Use az webapp config swap command: Incorrect. This swaps slots, not settings.
+- Set WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG: Incorrect. This is unrelated to slot swapping.
+
+---
+
+Question: What is the purpose of the "Always On" feature in App Service?
+
+- [x] Prevents apps from sleeping after 20 minutes of inactivity
+- [ ] Enables auto-scaling
+- [ ] Supports custom domains
+- [ ] Allows persistent storage
+
+Answers:
+
+- Prevents apps from sleeping after 20 minutes of inactivity: Correct. Always On keeps apps active, avoiding cold starts.
+- Enables auto-scaling: Incorrect. Auto-scaling is a separate feature.
+- Supports custom domains: Incorrect. Custom domains are unrelated.
+- Allows persistent storage: Incorrect. Storage is configured separately.
+
+---
+
+Question: What are Hybrid Connections in App Service?
+
+- [x] Enable secure communication with on-premises servers without firewall changes
+- [ ] Allow VNet integration with Azure services
+- [ ] Provide persistent storage for Linux apps
+- [ ] Enable cross-domain requests
+
+Answers:
+
+- Enable secure communication with on-premises servers without firewall changes: Correct. Hybrid Connections link Azure to on-premises securely.
+- Allow VNet integration with Azure services: Incorrect. This is Gateway-required VNet integration.
+- Provide persistent storage for Linux apps: Incorrect. Storage is separate.
+- Enable cross-domain requests: Incorrect. This is handled by CORS.
+
+---
+
+Question: How do you access a hierarchical setting in a C# application on App Service?
+
+- [x] Use Configuration["MyParentSetting:MySubSetting"]
+- [ ] Use Configuration.GetConnectionString("MyParentSetting")
+- [ ] Use Environment.GetEnvironmentVariable("MyParentSetting")
+- [ ] Use Configuration["MyParentSetting/MySubSetting"]
+
+Answers:
+
+- Use Configuration["MyParentSetting:MySubSetting"]: Correct. C# uses colon (:) for hierarchical settings.
+- Use Configuration.GetConnectionString("MyParentSetting"): Incorrect. This is for connection strings.
+- Use Environment.GetEnvironmentVariable("MyParentSetting"): Incorrect. This does not handle hierarchy.
+- Use Configuration["MyParentSetting/MySubSetting"]: Incorrect. Forward slash (/) is not standard.
+
+---
+
+Question: How do you export App Settings using Azure CLI?
+
+- [x] az webapp config appsettings list > settings.json
+- [ ] az webapp config export --settings settings.json
+- [ ] az webapp config appsettings set --export settings.json
+- [ ] az webapp config list > settings.json
+
+Answers:
+
+- az webapp config appsettings list > settings.json: Correct. This exports settings to a JSON file.
+- az webapp config export --settings settings.json: Incorrect. No such command exists.
+- az webapp config appsettings set --export settings.json: Incorrect. Set is for updating settings.
+- az webapp config list > settings.json: Incorrect. This does not export settings specifically.
+
+---
+
+Question: What differentiates Connection Strings from other App Settings in App Service?
+
+- [x] Connection Strings require a Type argument
+- [x] Both trigger a restart on change
+- [ ] Connection Strings are not accessible via Configuration
+- [ ] App Settings require a Type argument
+
+Answers:
+
+- Connection Strings require a Type argument: Correct. Type (e.g., SQLServer) is mandatory.
+- Both trigger a restart on change: Correct. Both cause app restarts.
+- Connection Strings are not accessible via Configuration: Incorrect. They are accessible via Configuration.
+- App Settings require a Type argument: Incorrect. Only Connection Strings need Type.
+
+---
+
+Question: How do you set a connection string using Azure CLI?
+
+- [x] az webapp config connection-string set --connection-string-type SQLServer --settings MyDb="Server=myserver;Database=mydb;User Id=myuser;Password=mypassword;"
+- [ ] az webapp config appsettings set --settings MyDb="Server=myserver;Database=mydb;"
+- [ ] az webapp config connection-string set --type SQLServer --value MyDb
+- [ ] az webapp config set --connection-string MyDb
+
+Answers:
+
+- az webapp config connection-string set --connection-string-type SQLServer --settings MyDb="Server=myserver;Database=mydb;User Id=myuser;Password=mypassword;": Correct. This sets a connection string with type.
+- az webapp config appsettings set --settings MyDb="Server=myserver;Database=mydb;": Incorrect. This sets an App Setting, not a connection string.
+- az webapp config connection-string set --type SQLServer --value MyDb: Incorrect. Syntax is incorrect; --settings is needed.
+- az webapp config set --connection-string MyDb: Incorrect. No such option exists.
+
+---
+
 Question: Which of the following networking features of App Service can be used to control outbound network traffic?
 
 - [ ] App-assigned address

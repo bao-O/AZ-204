@@ -8,7 +8,7 @@ TLDR;
 
 ## [Study guide for Exam AZ-204: Developing Solutions for Microsoft Azure](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-204#skills-measured-prior-to-august-21-2023)
 
-[AZ-204 Exam Updates for April 2023](https://www.youtube.com/watch?v=hzVy9RTl_iA)
+※ As update of [4/2025](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-204#change-log)
 
 ### Develop Azure compute solutions (25–30%)
 
@@ -63,13 +63,7 @@ TLDR;
 - Develop code that uses keys, secrets, and certificates stored in Azure Key Vault
 - Implement Managed Identities for Azure resources
 
-### Monitor, troubleshoot, and optimize Azure solutions (10–15%)
-
-#### Implement caching for solutions
-
-- Configure cache and expiration policies for Azure Cache for Redis
-- Implement secure and optimized application cache patterns including data sizing, connections, encryption, and expiration
-- Implement Azure Content Delivery Network endpoints and profiles
+### Monitor & troubleshoot Azure solutions (5–10%)
 
 #### Troubleshoot solutions by using Application Insights
 
@@ -77,7 +71,7 @@ TLDR;
 - Implement Application Insights web tests and alerts
 - Implement an app or service to use Application Insights
 
-### Connect to and consume Azure services and third-party services (15–20%)
+### Connect to and consume Azure services and third-party services (20–25%)
 
 #### Implement API Management
 
@@ -113,7 +107,6 @@ TLDR;
 1. [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/)
 1. [Azure App Configuration](https://learn.microsoft.com/en-us/azure/azure-app-configuration/)
 1. [Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/)
-1. [Azure Cache for Redis](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/)
 1. [Azure Content Delivery Network (CDN)](https://docs.microsoft.com/en-us/azure/cdn/)
 1. [Azure Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview)
 1. [Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/)
@@ -132,33 +125,42 @@ TLDR;
 
 - [Exam Demo](https://aka.ms/examdemo)
 - [Practice Assessments for Microsoft Certifications](https://learn.microsoft.com/en-us/certifications/exams/az-204/practice/assessment?assessment-type=practice&assessmentId=35)
-- [MeasureUp](https://www.measureup.com/catalogsearch/result/?q=az-204)
-- [WhizLabs](https://www.whizlabs.com/microsoft-azure-certification-az-204/)
-- [Learn Azure App](https://learnazure.app/)
+- [Paid] [MeasureUp](https://www.measureup.com/catalogsearch/result/?q=az-204)
+- [Paid] [WhizLabs](https://www.whizlabs.com/microsoft-azure-certification-az-204/)
+- [Paid] [Learn Azure App](https://learnazure.app/)
 
 ## Study resources
 
+### Documents
+
 - [Microsoft Learnigh Path](https://learn.microsoft.com/en-us/certifications/exams/az-204/) (or [/Learning Path](/Learning%20Path/))
+- [Microsoft Applied Skills](https://learn.microsoft.com/en-us/credentials/browse/?credential_types=applied%20skills) (some of the skills listed could help you understand certain topics better)
+  - [Deploy cloud-native apps using Azure Container Apps](https://learn.microsoft.com/en-us/credentials/applied-skills/deploy-cloud-native-apps-using-azure-container-apps/)
+  - [Deploy containers by using Azure Kubernetes Service](https://learn.microsoft.com/en-us/credentials/applied-skills/deploy-containers-by-using-azure-kubernetes-service/)
+  - [Secure storage for Azure Files and Azure Blob Storage](https://learn.microsoft.com/en-us/credentials/applied-skills/secure-storage-azure-files-azure-blob-storage/)
+- [/Topics](/Topics/)
+- [Knowledge Hub for Microsoft Certifications](https://certs.msfthub.wiki/)
+
+### Labs
+
 - [\[GitHub\] MicrosoftLearning / AZ-204: Developing solutions for Microsoft Azure](https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure)
-- Exam Readiness Zone:
+- [/Exercises](/Exercises/)
+- Azure provides Learn Sandbox, where you can create and play with some resources without concerning about money. Learn Sandbox has limit at resource quota and which resource can be created. To create an Learn Sandbox, go to an exercise from MS as [this](https://learn.microsoft.com/en-us/training/modules/host-a-web-app-with-azure-app-service/3-exercise-create-a-web-app-in-the-azure-portal?).
+
+### Courses (video)
+
+- Exam Readiness Zone (to know what will be covered in the exam):
   - [Develop Azure compute solutions](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-develop-azure-compute-solutions-1-of-5)
   - [Develop for Azure storage](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-develop-for-azure-storage-segment-2-of-5)
   - [Implement Azure security](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-implement-azure-security-segment-3-of-5)
   - [Monitor, troubleshoot, and optimize Azure solutions](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-monitor-troubleshoot-and-optimize-azure-solutions-segment-4-of-5)
   - [Connect to and consume Azure services and third-party services](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-204-connect-to-and-consume-azure-services-and-third-party-services-segment-5-of-5)
-- [/Topics](/Topics/)
-- [Microsoft Applied Skills](https://learn.microsoft.com/en-us/credentials/browse/?credential_types=applied%20skills) (some of the skills listed could help you understand certain topics better)
-- [Azure Sandbox Environment](https://github.com/Azure-Samples/azuresandbox) (costs $$$)
-- [\[OFFICIAL\] Microsoft Azure Developer Associate (AZ-204) Professional Certificate (Coursera)](https://www.coursera.org/professional-certificates/azure-developer-associate)
+- [Paid] [\[OFFICIAL\] Microsoft Azure Developer Associate (AZ-204) Professional Certificate (Coursera)](https://www.coursera.org/professional-certificates/azure-developer-associate)
 - [AZ-204: Developing Solutions for Microsoft Azure (Alan Rodrigues)](https://www.youtube.com/watch?v=wWBW6ojr-Nw&list=PLLc2nQDXYMHpekgrToMrDpVtFtvmRSqVt)
 - [Azure Developer Associate (AZ-204) — Full Course Pass the Exam! (freeCodeCamp.org)](https://www.youtube.com/watch?v=jZx8PMQjobk&t=832s&pp=ygUGYXotMjA0)
 - [Exam AZ-204: Developing Solutions for Microsoft Azure Course (A Guide To Cloud)](https://www.youtube.com/watch?v=tB_tBPfQJMI&list=PLhLKc18P9YODdrbyuA52Zn9-kwboIOz2W)
-- [AZ-204 Exam Preparation: Developing Solutions for Microsoft Azure (Cloud Academy)](https://cloudacademy.com/learning-paths/az-204-exam-preparation-developing-solutions-for-microsoft-azure-1208/)
-- [Developing Solutions for Microsoft Azure (AZ-204) - Pluralsight](https://www.pluralsight.com/paths/developing-solutions-for-microsoft-azure-az-204)
-- [AZ-204 Developing Solutions for Microsoft Azure - Udemy](https://www.udemy.com/course/70532-azure/)
-- [Microsoft Certifications Knowledge Hub](https://github.com/mscerts/hub/blob/main/README.md)
-- [Mastering the AZ-204 Exam - A Comprehensive Guide to Azure Certification Preparation](https://programmingwithwolfgang.com/mastering-az-204-exam-comprehensive-guide-azure-certification-preparation)
-- [Knowledge Hub for Microsoft Certifications](https://certs.msfthub.wiki/)
+- [Paid] [AZ-204 Exam Preparation: Developing Solutions for Microsoft Azure (Cloud Academy)](https://cloudacademy.com/learning-paths/az-204-exam-preparation-developing-solutions-for-microsoft-azure-1208/)
+- [Paid] [AZ-204 Developing Solutions for Microsoft Azure - Udemy](https://www.udemy.com/course/70532-azure/)
 
 ## Emojis
 

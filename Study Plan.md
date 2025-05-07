@@ -27,7 +27,6 @@
 1. Monitor, troubleshoot, and optimize Azure solutions
 
    - [Application Insights](./Topics/Application%20Insights.md)
-   - [Cache for Redis](./Topics/Cache%20for%20Redis.md)
    - [Content Delivery Network](./Topics/Content%20Delivery%20Network.md)
 
 1. Connect to and consume Azure services and third-party services

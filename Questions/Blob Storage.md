@@ -1,5 +1,116 @@
 # Blob Storage
 
+Question: Which of the following correctly describes the hierarchy of Azure Blob Storage?
+
+- [x] Storage Account > Container > Blob
+- [ ] Blob > Container > Storage Account
+- [ ] Storage Account > Blob > Container
+- [ ] Container > Storage Account > Blob
+
+Answers: Storage Account > Container > Blob: Correct. A Storage Account contains Containers, which store Blobs (individual objects like files).
+Blob > Container > Storage Account: Incorrect. Blobs are stored within Containers, not the other way around.
+Storage Account > Blob > Container: Incorrect. Containers organize Blobs within a Storage Account.
+Container > Storage Account > Blob: Incorrect. Containers are nested within Storage Accounts.
+
+---
+
+Question: Which statement is true about changing the SKU of an Azure Storage Account?
+
+- [ ] You can directly change the SKU from General-purpose v1 to General-purpose v2 in the Azure Portal.
+- [x] You cannot change the SKU type, but you can change the redundancy type seamlessly.
+- [ ] Changing the SKU requires deleting and recreating the Storage Account.
+- [x] To change the SKU, you must copy the contents to a new Storage Account with the desired SKU.
+
+Answers: You can directly change the SKU from General-purpose v1 to General-purpose v2: Incorrect. SKU type (v1, v2, BlobStorage) is fixed at creation.
+You cannot change the SKU type, but you can change the redundancy type seamlessly: Correct. Redundancy (e.g., LRS to ZRS) can be changed without downtime.
+Changing the SKU requires deleting and recreating the Storage Account: Incorrect. Copying to a new account is sufficient.
+
+---
+
+Question: Which scenario is most suitable for using Locally Redundant Storage (LRS) in Azure Blob Storage?
+
+- [x] Applications where data can be reconstructed and cost is a primary concern
+- [ ] Applications requiring high availability across multiple availability zones
+- [ ] Applications needing asynchronous replication to a secondary region
+- [ ] Applications using Azure Files for high-performance workloads
+
+Answers: Applications where data can be reconstructed and cost is a primary concern: Correct. LRS replicates data three times within one data center, ideal for low-cost, reconstructable data.
+Applications requiring high availability across multiple availability zones: Incorrect. ZRS is better for zone-level redundancy.
+Applications needing asynchronous replication to a secondary region: Incorrect. GRS or GZRS provides cross-region replication.
+Applications using Azure Files for high-performance workloads: Incorrect. ZRS is recommended for Azure Files.
+
+---
+
+Question: What is a key characteristic of Zone-Redundant Storage (ZRS) in Azure Blob Storage?
+
+- [ ] Data is replicated asynchronously to a secondary region
+- [x] Write operations are confirmed only after all availability zones acknowledge
+- [ ] It is the cheapest redundancy option for Blob Storage
+- [x] It is recommended for Azure Files to ensure high availability
+
+Answers: Data is replicated asynchronously to a secondary region: Incorrect. ZRS replicates data synchronously across three availability zones in one region, not to a secondary region.
+Write operations are confirmed only after all availability zones acknowledge: Correct. ZRS ensures data is written to all zones before confirming.
+It is the cheapest redundancy option for Blob Storage: Incorrect. LRS is cheaper.
+It is recommended for Azure Files to ensure high availability: Correct. ZRS provides zone-level redundancy, ideal for Azure Files.
+
+---
+
+Question: Which statement accurately describes Geo-Redundant Storage (GRS) in Azure Blob Storage?
+
+- [ ] Data is replicated synchronously across three availability zones
+- [x] Data is replicated locally (LRS) and asynchronously to a secondary region
+- [ ] Write operations are confirmed after the secondary region acknowledges
+- [ ] It is recommended for applications requiring zone-level redundancy
+
+Answers: Data is replicated synchronously across three availability zones: Incorrect. GRS does not use zone-level redundancy; ZRS does.
+Data is replicated locally (LRS) and asynchronously to a secondary region: Correct. GRS combines LRS in the primary region with asynchronous replication to a secondary region.
+Write operations are confirmed after the secondary region acknowledges: Incorrect. GRS replication is asynchronous; writes are confirmed locally.
+It is recommended for applications requiring zone-level redundancy: Incorrect. ZRS or GZRS is better for zone redundancy.
+
+---
+
+Question: What distinguishes Geo-Zone-Redundant Storage (GZRS) from other redundancy types in Azure Blob Storage?
+
+- [ ] It is the only redundancy type supporting Azure Files
+- [x] It combines ZRS in the primary region with asynchronous replication to a secondary region
+- [ ] It provides read access to the secondary region by default
+- [ ] It is cheaper than LRS for large datasets
+
+Answers: It is the only redundancy type supporting Azure Files: Incorrect. ZRS and other types also support Azure Files.
+It combines ZRS in the primary region with asynchronous replication to a secondary region: Correct. GZRS uses ZRS locally and replicates to a secondary region.
+It provides read access to the secondary region by default: Incorrect. Read access requires RA-GZRS.
+It is cheaper than LRS for large datasets: Incorrect. GZRS is more expensive than LRS.
+
+---
+
+Question: What is a key feature of Read-Access Geo-Redundant Storage (RA-GRS) in Azure Blob Storage?
+
+- [x] Read access is available at the secondary region via a specific URL
+- [ ] Data is replicated synchronously to the secondary region
+- [ ] It is the default redundancy type for all Storage Accounts
+- [ ] Write operations are confirmed only after secondary region acknowledgment
+
+Answers: Read access is available at the secondary region via a specific URL: Correct. RA-GRS allows reading from the secondary region using https://{accountName}-secondary.<url>.
+Data is replicated synchronously to the secondary region: Incorrect. RA-GRS uses asynchronous replication.
+It is the default redundancy type for all Storage Accounts: Incorrect. LRS is the default.
+Write operations are confirmed only after secondary region acknowledgment: Incorrect. Writes are confirmed locally.
+
+---
+
+Question: Which statement is true about Read-Access Geo-Zone-Redundant Storage (RA-GZRS) in Azure Blob Storage?
+
+- [ ] It replicates data synchronously across three regions
+- [x] It provides read access to the secondary region with zone-redundant storage in the primary region
+- [ ] It is cheaper than ZRS for small datasets
+- [ ] It does not support Azure Files
+
+Answers: It replicates data synchronously across three regions: Incorrect. RA-GZRS uses asynchronous replication to the secondary region.
+It provides read access to the secondary region with zone-redundant storage in the primary region: Correct. RA-GZRS combines ZRS in the primary region with read access to the secondary region.
+It is cheaper than ZRS for small datasets: Incorrect. RA-GZRS is more expensive.
+It does not support Azure Files: Incorrect. RA-GZRS supports Azure Files.
+
+---
+
 Question: Which of the following types of blobs are used to store virtual hard drive files?
 
 - [ ] Block blobs
@@ -245,6 +356,7 @@ Options:
 - [ ] Predictive Results – Hot access tier, Sensor Data – Cool access tier
 
 Answer:
+
 - **Predictive Results**: Both Hot and Cool tiers are instantly available (within minutes), but the Hot tier is optimized for frequently accessed data. Anything needing less than an hour that doesn’t need frequent access could be put in Cool.
 - **Sensor Data**: Both Cool and Archive are suitable for less frequently accessed data. Since the question mentions no requirement for instant access and asks for optimal (cost-effective), Archive tier is more suitable.
 
